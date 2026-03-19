@@ -1,0 +1,11 @@
+name: MLOps Pipeline
+on: [push]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Train
+      run: python src/train.py
+    - name: Build Docker
+      run: docker build -t myacr.azurecr.io/house-api:v1 ./deployment

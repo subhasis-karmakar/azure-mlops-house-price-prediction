@@ -1,0 +1,8 @@
+jobs:
+  drift_check:
+    type: command
+    command: python monitoring/drift_detection.py
+  retrain:
+    type: command
+    command: python src/train.py
+    depends_on: [drift_check]
